@@ -1,0 +1,741 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>GenieAli</title>
+
+    <!-- Bootstrap CSS CDN -->
+    {#    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"#}
+    {#          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">#}
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{% static 'Progress_Tracker.css' %}">
+    <link rel="stylesheet" href="{% static 'twitter_bootstrap.css' %}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet"
+          type="text/css"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+
+
+    <script>
+
+        $(function () {
+            $("#datepicker2").datepicker({
+                minDate: 0,
+                onSelect: function (date) {
+                    $("#datepicker1").datepicker('option', 'minDate', date);
+                }
+            });
+        });
+
+        $("#datepicker1").datepicker({});
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+            crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+            integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+            crossorigin="anonymous"></script>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+            crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+            crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+        $(function () {
+            $("#datepicker").datepicker({
+                autoclose: true,
+                todayHighlight: true
+            }).datepicker('update', new Date());
+        });
+        $(function () {
+            $("#datepicker1").datepicker({
+                autoclose: true,
+                todayHighlight: true
+            }).datepicker('update', new Date());
+        });
+
+        function ContactInfo() {
+            window.location.href = "AdvancedProgressTracker.html";
+        }
+
+        $(document).ready(function () {
+            $('#example').DataTable({
+                columnDefs: [{}],
+                searching: false,
+                select: {
+                    style: 'os',
+                    selector: 'td:first-child'
+                },
+                language: {
+                    paginate: {
+                        next: '<img src="../../Images/down arrow.png"/>',
+                        previous: '<img src="../../Images/down arrow back.png"/>'
+                    }
+                }
+            })
+        });
+    </script>
+</head>
+
+<body>
+<div class="wrapper">
+
+
+    <!-- Page Content  -->
+    <div id="content">
+
+
+        <div class="card buttons">
+            <div class="card-body forbutton">
+                <div style="padding-top: 16px;">
+                    <div class="headergoogle" style="text-transform: uppercase;">Google Analytics</div>
+                    <div class="dotwthtext">
+                        <div class="bluedot"></div>
+                        <p style="margin-left: 5px;">Users</p>
+                    </div>
+                </div>
+                <div class="rightsectiodate">
+                    <div class="datesection">
+                        <h6>From Date</h6>
+                        <div id="datepicker2" class="input-group date" data-date-format="yyyy-mm-dd">
+
+                            <input class="form-control" type="text" name="from_date" value="{{ from_date }}" readonly/>
+                            <span class="input-group-addon"><img src="/static/Images/calendar.png"/></span>
+                        </div>
+                    </div>
+                    <div class="datesection">
+                        <h6>To date</h6>
+                        <div id="datepicker1" class="input-group date" data-date-format="yyyy-mm-dd">
+                            <input class="form-control" type="text" name="to_date" value="{{ to_date }}" readonly/>
+                            <span class="input-group-addon"><img src="/static/Images/calendar.png"/></span>
+                        </div>
+                    </div>
+                    <div class="buttonaddsection">
+                        <div class="lastbutton">
+                            Show
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="card forms" style="margin-top: 25px;">
+            <div class="card-body">
+                <div style="display: flex;">
+                    <div style="writing-mode: vertical-rl;margin-top: 140px;">
+                        Users
+                    </div>
+                    <canvas id="myChart" width="950" height="335"></canvas>
+                    <div>
+                    </div>
+                </div>
+                <div class="data" style="text-align: center;">
+                    Days
+                </div>
+                <div class="graphwithcardsection row" style="margin-top: 20px;">
+                    <div class="col-xl-2">
+                        <div class="card insidecardsection" style="height: 150px; width: 83%;">
+                            <div class="card-body insidecardbody" style="display: flex;
+                flex-direction: column;
+                justify-content: space-between;">
+                                <div class="headforcard">
+                                    Users
+                                </div>
+                                <div class="finder">
+                                    {{ metric_value.3 }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2" style="margin-left: -49px;">
+                        <div class="card insidecardsection" style="height: 150px; width: 83%;">
+                            <div class="card-body insidecardbody" style="display: flex;
+                flex-direction: column;
+                justify-content: space-between;">
+                                <div class="headforcard">
+                                    New Users
+                                </div>
+                                <div class="finder">
+                                    {{ metric_value.4 }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2" style="margin-left: -49px;">
+                        <div class="card insidecardsection" style="height: 150px; width: 83%;">
+                            <div class="card-body insidecardbody" style="display: flex;
+                flex-direction: column;
+                justify-content: space-between;">
+                                <div class="headforcard">
+                                    Sessions
+                                </div>
+                                <div class="finder">
+                                    {{ metric_value.0 }}
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2" style="margin-left: -49px;">
+                        <div class="card insidecardsection" style="height: 150px; width: 83%;">
+                            <div class="card-body insidecardbody" style="display: flex;
+                flex-direction: column;
+                justify-content: space-between;">
+                                <div class="headforcard">
+                                    Sessions per User
+                                </div>
+                                <div class="finder">
+                                    {{ metric_value.7|floatformat }}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2" style="margin-left: -49px;">
+                        <div class="card insidecardsection" style="height: 150px; width: 83%;">
+                            <div class="card-body insidecardbody" style="display: flex;
+                flex-direction: column;
+                justify-content: space-between;">
+                                <div class="headforcard">
+                                    Page Views
+                                </div>
+                                <div class="finder">
+                                    {{ metric_value.5 }}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2" style="margin-left: -49px;">
+                        <div class="card insidecardsection" style="height: 150px; width: 83%;">
+                            <div class="card-body insidecardbody" style="display: flex;
+                flex-direction: column;
+                justify-content: space-between;">
+                                <div class="headforcard">
+                                    Pages/Session
+                                </div>
+                                <div class="finder">
+                                    {{ metric_value.6|floatformat }}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2" style="margin-left: -49px;">
+                        <div class="card insidecardsection" style="height: 150px; width: 83%;">
+                            <div class="card-body insidecardbody" style="display: flex;
+                flex-direction: column;
+                justify-content: space-between;">
+                                <div class="headforcard">
+                                    Avg Session Duration
+                                </div>
+                                <div class="finder">
+                                    {{ metric_value.2|floatformat }}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2" style="margin-left: -49px;">
+                        <div class="card insidecardsection" style="height: 150px; width: 83%;">
+                            <div class="card-body insidecardbody" style="display: flex;
+                flex-direction: column;
+                justify-content: space-between;">
+                                <div class="headforcard">
+                                    Bounce Rate
+                                </div>
+                                <div class="finder">
+                                    {{ metric_value.1|floatformat }}%
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+<script>
+    Chart.defaults.global = {
+        // Boolean - Whether to animate the chart
+        animation: true,
+
+        // Number - Number of animation steps
+        animationSteps: 60,
+
+        animationEasing: "easeOutQuart",
+
+        // Boolean - If we should show the scale at all
+        showScale: true,
+
+        // Boolean - If we want to override with a hard coded scale
+        scaleOverride: false,
+
+        // ** Required if scaleOverride is true **
+        // Number - The number of steps in a hard coded scale
+        scaleSteps: null,
+        // Number - The value jump in the hard coded scale
+        scaleStepWidth: null,
+        // Number - The scale starting value
+        scaleStartValue: null,
+
+        // String - Colour of the scale line
+        scaleLineColor: "rgba(0,0,0,.1)",
+
+        // Number - Pixel width of the scale line
+        scaleLineWidth: 1,
+
+
+        // Boolean - Whether to show labels on the scale
+        scaleShowLabels: true,
+
+        // Interpolated JS string - can access value
+        scaleLabel: "<%=value%>",
+
+        // Boolean - Whether the scale should stick to integers, not floats even if drawing space is there
+        scaleIntegersOnly: true,
+
+        // Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+        scaleBeginAtZero: false,
+
+        // String - Scale label font declaration for the scale label
+        scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+        // Number - Scale label font size in pixels
+        scaleFontSize: 12,
+
+        // String - Scale label font weight style
+        scaleFontStyle: "normal",
+
+        // String - Scale label font colour
+        scaleFontColor: "#666",
+
+        // Boolean - whether or not the chart should be responsive and resize when the browser does.
+        //  responsive: true,
+
+        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+        maintainAspectRatio: true,
+
+        // Boolean - Determines whether to draw tooltips on the canvas or not
+        showTooltips: true,
+
+        // Function - Determines whether to execute the customTooltips function instead of drawing the built in tooltips (See [Advanced - External Tooltips](#advanced-usage-custom-tooltips))
+        customTooltips: false,
+        onAnimationProgress: function () {
+        },
+
+        // Function - Will fire on animation completion.
+        onAnimationComplete: function () {
+        }
+    };
+    var data = {
+        labels: {{ datee|safe }},
+        datasets: [
+            {
+                label: "My Second dataset",
+                fillColor: "rgba(85,96,224,0.2)",
+                strokeColor: "rgba(85,96,224,1)",
+                pointColor: "rgba(85,96,224,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: {{ users|safe }}
+            }
+        ]
+    };
+    var options = {
+
+        ///Boolean - Whether grid lines are shown across the chart
+        scaleShowGridLines: true,
+
+        scales: {
+            yAxes: [{
+                ticks: {
+                    max: 5,
+                    min: 0,
+                    stepSize: 0.5
+                }
+            }]
+        },
+
+        //String - Colour of the grid lines
+        scaleGridLineColor: "rgba(0,0,0,.05)",
+
+        //Number - Width of the grid lines
+        scaleGridLineWidth: 1,
+
+        //Boolean - Whether to show horizontal lines (except X axis)
+        scaleShowHorizontalLines: true,
+
+        //Boolean - Whether to show vertical lines (except Y axis)
+        scaleShowVerticalLines: true,
+
+        //Boolean - Whether the line is curved between points
+        bezierCurve: false,
+
+        //Number - Tension of the bezier curve between points
+        bezierCurveTension: 0.4,
+
+        //Boolean - Whether to show a dot for each point
+        pointDot: true,
+
+        //Number - Radius of each point dot in pixels
+        pointDotRadius: 5,
+
+        //Number - Pixel width of point dot stroke
+        pointDotStrokeWidth: 1,
+
+        //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+        pointHitDetectionRadius: 5,
+
+        //Boolean - Whether to show a stroke for datasets
+        datasetStroke: true,
+
+        //Number - Pixel width of dataset stroke
+        datasetStrokeWidth: 1,
+
+        //Boolean - Whether to fill the dataset with a colour
+        datasetFill: true,
+
+        //String - A legend template
+        {#legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"#}
+
+    };
+    ;
+
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var myLineChart = new Chart(ctx).Line(data, options);
+
+
+    //////////////canvas chart////////////////////////
+    //////////////// Arranque //
+    function initial() {
+        setInterval(drawOne, 30);
+    }
+
+    //////////////// Variáveis // Valores aqui!
+
+    var valores = [0, 50, 60, 70, 20, 20];
+    var pontos = [];
+    var diferenca = [];
+
+
+    function drawGridOne(width, height, colun, line) {
+        var ctx = document.getElementById('canvas').getContext('2d');
+        ctx.fillRect(0, 0, width, height);
+        ctx.save();
+        for (var c = 1; c < (width / colun); c++) {
+            ctx.beginPath();
+            ctx.moveTo(c * colun, 0);
+            ctx.lineTo(c * colun, height);
+            ctx.stroke();
+        }
+        for (var l = 1; l < (height / line); l++) {
+            ctx.beginPath();
+            ctx.moveTo(0, l * line);
+            ctx.lineTo(width, l * line);
+            ctx.stroke();
+        }
+    }
+
+    function drawingLinesOne(width, points, c) {
+        var ctx = document.getElementById('canvas').getContext('2d');
+        ctx.beginPath();
+        ctx.globalAlpha = c * 0.04;
+        ctx.moveTo(((c - 1) * width + 10), points[c - 1]);
+        ctx.lineTo(c * width + 10, points[c]);
+        ctx.lineTo(c * width + 10, 300);
+        ctx.lineTo(((c - 1) * width + 10), 300);
+        ctx.lineTo(((c - 1) * width + 10), points[c - 1]);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.globalAlpha = 1;
+        ctx.moveTo(((c - 1) * width + 10), points[c - 1]);
+        ctx.lineTo(c * width + 10, points[c]);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.save();
+        ctx.fillStyle = ctx.strokeStyle;
+        ctx.arc(c * width + 10, points[c], 3, 0, Math.PI * 2)
+        ctx.fill();
+        ctx.restore();
+    }
+
+
+    function drawOne() {
+        var ctx = document.getElementById('canvas').getContext('2d');
+
+        //////////////// setupBackground
+        ctx.fillStyle = "#ffffff";
+        ctx.strokeStyle = "#ffffff";
+        ctx.save();
+        drawGridOne(500, 300, 10, 10);
+
+
+        for (var c = 0; c < valores.length; c++) {
+            if (isNaN(pontos[c])) {
+                pontos[c] = 300;
+            }
+            ctx.lineWidth = 1.4;
+            larg = 480 / (valores.length - 1);
+            diferenca[c] = (300 - valores[c]) - pontos[c];
+            pontos[c] += diferenca[c] / (c + 1);
+
+            //////////////// setupGraphic
+            ctx.strokeStyle = "#5864fe";
+            ctx.fillStyle = "#5864fe";
+            drawingLinesOne(larg, pontos, c);
+        }
+    }
+
+    window.onload = initial();
+    /////////first canvas end/////////////
+
+    //////////////// Arranque //
+    function init() {
+        setInterval(draw, 30);
+    }
+
+    //////////////// Variáveis // Valores aqui!
+
+    var valores = [0, 50, 60, 70, 20, 20];
+    var pontos = [];
+    var diferenca = [];
+
+
+    function drawGrid(width, height, colun, line) {
+        var ctx = document.getElementById('canvasone').getContext('2d');
+        ctx.fillRect(0, 0, width, height);
+        ctx.save();
+        for (var c = 1; c < (width / colun); c++) {
+            ctx.beginPath();
+            ctx.moveTo(c * colun, 0);
+            ctx.lineTo(c * colun, height);
+            ctx.stroke();
+        }
+        for (var l = 1; l < (height / line); l++) {
+            ctx.beginPath();
+            ctx.moveTo(0, l * line);
+            ctx.lineTo(width, l * line);
+            ctx.stroke();
+        }
+    }
+
+    function drawingLines(width, points, c) {
+        var ctx = document.getElementById('canvasone').getContext('2d');
+        ctx.beginPath();
+        ctx.globalAlpha = c * 0.04;
+        ctx.moveTo(((c - 1) * width + 10), points[c - 1]);
+        ctx.lineTo(c * width + 10, points[c]);
+        ctx.lineTo(c * width + 10, 300);
+        ctx.lineTo(((c - 1) * width + 10), 300);
+        ctx.lineTo(((c - 1) * width + 10), points[c - 1]);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.globalAlpha = 1;
+        ctx.moveTo(((c - 1) * width + 10), points[c - 1]);
+        ctx.lineTo(c * width + 10, points[c]);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.save();
+        ctx.fillStyle = ctx.strokeStyle;
+        ctx.arc(c * width + 10, points[c], 3, 0, Math.PI * 2)
+        ctx.fill();
+        ctx.restore();
+    }
+
+
+    function draw() {
+        var ctx = document.getElementById('canvasone').getContext('2d');
+
+        //////////////// setupBackground
+        ctx.fillStyle = "#ffffff";
+        ctx.strokeStyle = "#ffffff";
+        ctx.save();
+        drawGrid(500, 300, 10, 10);
+
+
+        for (var c = 0; c < valores.length; c++) {
+            if (isNaN(pontos[c])) {
+                pontos[c] = 300;
+            }
+            ctx.lineWidth = 1.4;
+            larg = 480 / (valores.length - 1);
+            diferenca[c] = (300 - valores[c]) - pontos[c];
+            pontos[c] += diferenca[c] / (c + 1);
+
+            //////////////// setupGraphic
+            ctx.strokeStyle = "#5864fe";
+            ctx.fillStyle = "#5864fe";
+            drawingLines(larg, pontos, c);
+        }
+    }
+
+    window.onload = init();
+
+    ///////////////Second Canvas end////////////////////
+    function initTwo() {
+        setInterval(drawTwo, 30);
+    }
+
+    //////////////// Variáveis // Valores aqui!
+
+    var valores = [0, 50, 60, 70, 20, 20];
+    var pontos = [];
+    var diferenca = [];
+
+
+    function drawGridTwo(width, height, colun, line) {
+        var ctx = document.getElementById('canvastwo').getContext('2d');
+        ctx.fillRect(0, 0, width, height);
+        ctx.save();
+        for (var c = 1; c < (width / colun); c++) {
+            ctx.beginPath();
+            ctx.moveTo(c * colun, 0);
+            ctx.lineTo(c * colun, height);
+            ctx.stroke();
+        }
+        for (var l = 1; l < (height / line); l++) {
+            ctx.beginPath();
+            ctx.moveTo(0, l * line);
+            ctx.lineTo(width, l * line);
+            ctx.stroke();
+        }
+    }
+
+    function drawingLinesTwo(width, points, c) {
+        var ctx = document.getElementById('canvastwo').getContext('2d');
+        ctx.beginPath();
+        ctx.globalAlpha = c * 0.04;
+        ctx.moveTo(((c - 1) * width + 10), points[c - 1]);
+        ctx.lineTo(c * width + 10, points[c]);
+        ctx.lineTo(c * width + 10, 300);
+        ctx.lineTo(((c - 1) * width + 10), 300);
+        ctx.lineTo(((c - 1) * width + 10), points[c - 1]);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.globalAlpha = 1;
+        ctx.moveTo(((c - 1) * width + 10), points[c - 1]);
+        ctx.lineTo(c * width + 10, points[c]);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.save();
+        ctx.fillStyle = ctx.strokeStyle;
+        ctx.arc(c * width + 10, points[c], 3, 0, Math.PI * 2)
+        ctx.fill();
+        ctx.restore();
+    }
+
+
+    function drawTwo() {
+        var ctx = document.getElementById('canvastwo').getContext('2d');
+
+        //////////////// setupBackground
+        ctx.fillStyle = "#ffffff";
+        ctx.strokeStyle = "#ffffff";
+        ctx.save();
+        drawGridTwo(500, 300, 10, 10);
+
+
+        for (var c = 0; c < valores.length; c++) {
+            if (isNaN(pontos[c])) {
+                pontos[c] = 300;
+            }
+            ctx.lineWidth = 1.4;
+            larg = 480 / (valores.length - 1);
+            diferenca[c] = (300 - valores[c]) - pontos[c];
+            pontos[c] += diferenca[c] / (c + 1);
+
+            //////////////// setupGraphic
+            ctx.strokeStyle = "#5864fe";
+            ctx.fillStyle = "#5864fe";
+            drawingLinesTwo(larg, pontos, c);
+        }
+    }
+
+    window.onload = initTwo();
+
+    ////////ThirdCanvasEnd///////////
+    var donutEl = document.getElementById("donut").getContext("2d");
+    var donut = new Chart(donutEl).Doughnut(
+        // Datas
+        [
+            {
+                value: 300,
+                color: "#F7464A",
+                highlight: "#FF5A5E",
+                label: "Red"
+            },
+            {
+                value: 50,
+                color: "#46BFBD",
+                highlight: "#5AD3D1",
+                label: "Green"
+            },
+            {
+                value: 100,
+                color: "#FDB45C",
+                highlight: "#FFC870",
+                label: "Yellow"
+            }
+        ],
+        // Options
+        {
+            segmentShowStroke: true,
+            segmentStrokeColor: "#fff",
+            segmentStrokeWidth: 2,
+            percentageInnerCutout: 50,
+            animationSteps: 100,
+            animationEasing: "easeOutBounce",
+            animateRotate: true,
+            animateScale: false,
+            responsive: true,
+            maintainAspectRatio: true,
+            showScale: true,
+            animateScale: true,
+            centre: "88"
+        });
+</script>
+</body>
+
+</html>
